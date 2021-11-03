@@ -9,8 +9,8 @@ import com.example.noteapp_room.data2.Task
 import kotlinx.android.synthetic.main.card_task.view.*
 
 
-class recyclerView (private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
-    private var taskContent = emptyList<Task>()
+class recyclerView (    private var taskContent: List<Task>,private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
+   // private var taskContent = emptyList<Task>()
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
