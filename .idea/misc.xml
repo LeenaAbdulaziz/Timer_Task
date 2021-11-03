@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/abc/AndroidStudioProjects/Timer_Task/app/src/main/res/layout/card_task.xml" value="0.2796875" />
+        <entry key="..\:/Users/my samsung/AndroidStudioProjects/Timer_Task/app/src/main/res/drawable/background.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/my samsung/AndroidStudioProjects/Timer_Task/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/my samsung/AndroidStudioProjects/Timer_Task/app/src/main/res/layout/activity_main2.xml" value="0.268" />
+        <entry key="..\:/Users/my samsung/AndroidStudioProjects/Timer_Task/app/src/main/res/layout/card_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>

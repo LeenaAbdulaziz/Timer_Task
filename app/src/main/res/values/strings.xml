@@ -3,5 +3,10 @@
     <string name="view">view</string>
     <string name="save">Save</string>
     <string name="description">description</string>
-    <string name="task_name">Task Name</string>
+    <string name="task_name">Task Name:</string>
+    <string name="task_name1">Task Name</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_description">Task Description</string>
+    <string name="task">task</string>
+
 </resources>

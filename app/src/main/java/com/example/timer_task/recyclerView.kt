@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.card_task.view.*
+//import kotlinx.android.synthetic.main.card_task.view.*
 
 class recyclerView (private val activity: Activity, private val taskContant: ArrayList<ArrayList<String>>): RecyclerView.Adapter<recyclerView.ItemHolder>() {
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -22,11 +22,11 @@ class recyclerView (private val activity: Activity, private val taskContant: Arr
            /// desc.text= taskContant[position][1]
            // time.text=taskContant[position][2]
 
-            card.setOnClickListener {
+            //card.setOnClickListener {
 
                /// Alert()
 
-            }
+          //  }
 
 
         }
