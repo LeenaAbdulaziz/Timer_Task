@@ -5,10 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     var isStart=false
     var tempTime=0
     var current_second=0
-    lateinit var tvTaskTime: EditText
+    lateinit var tvTaskTime: TextView
     lateinit var itemClick:LinearLayout
 
 

@@ -15,6 +15,7 @@ class recyclerView (private var taskContent: List<Task>,private val activity: Ac
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_task, parent, false))
     }
@@ -39,5 +40,7 @@ class recyclerView (private var taskContent: List<Task>,private val activity: Ac
     }
 
     override fun getItemCount()= taskContent.size
+
+    
 
 }
