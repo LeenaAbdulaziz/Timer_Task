@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp_room.data2.Task
-import kotlinx.android.synthetic.main.card_task.view.*
 
 
-class recyclerView (    private var taskContent: List<Task>,private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
+class recyclerView (private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
+    private var taskContent = emptyList<Task>()
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
@@ -22,15 +22,15 @@ class recyclerView (    private var taskContent: List<Task>,private val activity
         val tasks=taskContent[position]
         holder.itemView.apply {
             tvTaskName.text = tasks.taskName
-            // desc.text= tasks.taskDescription
+          // desc.text= tasks.taskDescription
             tvTaskTime.text=tasks.timer
 
             //onClick listener if the user click on the task layout
             taskLayout.setOnClickListener {
 
-                /// ex stop the time
+               /// ex stop the time
 
-            }
+           }
 
 
         }
