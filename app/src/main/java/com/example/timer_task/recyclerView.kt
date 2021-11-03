@@ -22,11 +22,11 @@ class recyclerView (private val activity: Activity, private val taskContant: Arr
            /// desc.text= taskContant[position][1]
            // time.text=taskContant[position][2]
 
-            card.setOnClickListener {
+            //card.setOnClickListener {
 
                /// Alert()
 
-            }
+          //  }
 
 
         }
