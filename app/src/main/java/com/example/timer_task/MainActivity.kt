@@ -44,17 +44,17 @@ class MainActivity : AppCompatActivity() {
     }
     fun updatedrecycle(){
         myViewModel.getTasks().observe(this,{
-                //tasks->
+            //tasks->
             updateRV(it)
-          //  recycle.adapter = RecyclerView (this, tasks)
-           // recycle.layoutManager = LinearLayoutManager(this)
+            //  recycle.adapter = RecyclerView (this, tasks)
+            // recycle.layoutManager = LinearLayoutManager(this)
         })
 
     }
-fun updateRV(list:List<Task>) {
-    recycle.adapter = recyclerView( list,this)
-    recycle.layoutManager = LinearLayoutManager(this)
-}
+    fun updateRV(list:List<Task>) {
+        recycle.adapter = recyclerView( list,this)
+        recycle.layoutManager = LinearLayoutManager(this)
+    }
     fun update(task: Task) {
 
         val d = AlertDialog.Builder(this)
