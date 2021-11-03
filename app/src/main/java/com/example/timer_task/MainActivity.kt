@@ -17,52 +17,23 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var recycle: RecyclerView
     lateinit var list:List<Task>
-    lateinit var add:Button
-    var isStart=false
-    var tempTime=0
-    var current_second=0
-    lateinit var tvTaskTime: TextView
-    lateinit var itemClick:LinearLayout
+
+
 
 
     lateinit var myViewModel :MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recycle=findViewById(R.id.rvTask)
-        tvTaskTime=findViewById(R.id.tvTaskTime)
-        itemClick=findViewById(R.id.itemClick)
 
+        recycle = findViewById(R.id.rvTask)
 
-        list= listOf()
-        myViewModel= ViewModelProvider(this).get(MyViewModel::class.java)
+        list = listOf()
+        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         updatedrecycle()
-// ----------------------object of Counter up time----------------------------
-        val time: CountUpTimer = object : CountUpTimer(Long.MAX_VALUE) {
-
-            override fun onTick(second: Int) {
-                tvTaskTime.setText((second+tempTime).toString())
-                current_second=second
-            }
-
-        }
-
-//------------------when click on task--------------------------
-        itemClick.setOnClickListener {
-            if (isStart)
-            {
-                time.cancel()
-                isStart=false
-                tempTime+=current_second
-            }
-            else
-            {
-                time.start()
-                isStart=true
-            }
-        }
 
     }
+
 
     fun updatedrecycle(){
         myViewModel.getTasks().observe(this,{
@@ -78,36 +49,14 @@ class MainActivity : AppCompatActivity() {
         recycle.adapter = recyclerView( list,this)
         recycle.layoutManager = LinearLayoutManager(this)
     }
-    fun update(task: Task) {
-        val d = AlertDialog.Builder(this)
-        lateinit var name: EditText
-        lateinit var description: EditText
-        lateinit var vv: View
 
-        d.setCancelable(false)
-        d.setPositiveButton("update") { _, _ ->
-            task.taskName = name.text.toString()
-            task.taskDescription = description.text.toString()
+    fun update(task: Task) {
 
             myViewModel.updatesTasks(task.id,task.taskName,task.taskDescription)
         }
-            .setNegativeButton("Cancel") { d, _ -> d.cancel() }
 
 
-        val alert = d.create()
-        alert.setTitle("Edit celebrity")
-        vv=layoutInflater.inflate(R.layout.alert,null)
-        alert.setView(vv)
-        name= vv.findViewById(R.id.edTaskNameEdited)
-        description=vv.findViewById(R.id.edTaskDescriptionedited)
 
-        name.setText(task.taskName)
-        description.setText(task.taskDescription)
-
-
-        alert.show()
-
-    }
 
     fun confirm(id:Int){
 

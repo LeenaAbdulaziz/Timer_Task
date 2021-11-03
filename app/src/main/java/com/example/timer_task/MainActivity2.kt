@@ -34,7 +34,7 @@ lateinit var viewbtn:Button
         savebtn.setOnClickListener {
             val s1=taskName.text.toString()
             val s2=taskDescription.text.toString()
-            if(s1.isNotEmpty()&&s1.isNotEmpty()) {
+            if(s1.isNotEmpty()&&s2.isNotEmpty()) {
                 myViewModel.addTasks(s1,s2)
                 taskName.text.clear()
                 taskDescription.text.clear()
@@ -46,7 +46,7 @@ lateinit var viewbtn:Button
 
             }
             else{
-                Toast.makeText(applicationContext,"please add note first", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"All fields are required!", Toast.LENGTH_SHORT).show()
             }
         }
         viewbtn.setOnClickListener {
