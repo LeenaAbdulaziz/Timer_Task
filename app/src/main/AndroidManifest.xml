@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Timer_Task">
         <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity2"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".startUp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
