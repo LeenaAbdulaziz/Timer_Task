@@ -13,13 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp_room.data2.Task
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
 
     lateinit var recycle: RecyclerView
     lateinit var list:List<Task>
-     lateinit var add:Button
+     lateinit var btnAdd:FloatingActionButton
 
     lateinit var myViewModel :MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +28,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         recycle=findViewById(R.id.rvTask)
 
+        btnAdd=findViewById(R.id.btnAdd)
 
-
+        btnAdd.setOnClickListener {
+            intent = Intent(applicationContext, MainActivity2::class.java)
+            startActivity(intent)
+        }
 
         list= listOf()
         myViewModel= ViewModelProvider(this).get(MyViewModel::class.java)
