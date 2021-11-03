@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         myViewModel.getTasks().observe(this,{
             //tasks->
             updateRV(it)
+            // u
             //  recycle.adapter = RecyclerView (this, tasks)
             // recycle.layoutManager = LinearLayoutManager(this)
         })

@@ -22,15 +22,15 @@ class recyclerView (    private var taskContent: List<Task>,private val activity
         val tasks=taskContent[position]
         holder.itemView.apply {
             tvTaskName.text = tasks.taskName
-          // desc.text= tasks.taskDescription
+            // desc.text= tasks.taskDescription
             tvTaskTime.text=tasks.timer
 
             //onClick listener if the user click on the task layout
             taskLayout.setOnClickListener {
 
-               /// ex stop the time
+                /// ex stop the time
 
-           }
+            }
 
 
         }
