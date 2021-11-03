@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp_room.data2.Task
+import kotlinx.android.synthetic.main.card_task.view.*
 
 
-class recyclerView (private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
-    private var taskContent = emptyList<Task>()
+
+class recyclerView (private var taskContent: List<Task>,private val activity: Activity): RecyclerView.Adapter<recyclerView.ItemHolder>() {
+
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
@@ -26,7 +28,7 @@ class recyclerView (private val activity: Activity): RecyclerView.Adapter<recycl
             tvTaskTime.text=tasks.timer
 
             //onClick listener if the user click on the task layout
-            taskLayout.setOnClickListener {
+            itemClick.setOnClickListener {
 
                /// ex stop the time
 
