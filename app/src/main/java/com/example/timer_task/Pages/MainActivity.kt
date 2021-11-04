@@ -1,9 +1,12 @@
 package com.example.timer_task.Pages
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +60,37 @@ class MainActivity : AppCompatActivity() {
 
 
    }
+
+    fun deleteitem(id:Int) {
+
+        myViewModel.deleteTasks(id)
+
+        Toast.makeText(applicationContext,"Successfully deleted", Toast.LENGTH_SHORT).show()
+
+    }
+
+
+    fun confirm(id:Int ){
+        var at= AlertDialog.Builder(this)
+        at.setTitle("delete Task")
+        at.setPositiveButton("Delete", DialogInterface.OnClickListener { dialogInterface, i ->
+            deleteitem(id)
+        })
+        at.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+
+        at.show()
+    }
+
+    fun info(task: Task){
+        var at= AlertDialog.Builder(this)
+        at.setTitle("Description")
+        at.setMessage(task.taskDescription)
+        at.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+
+        at.show()
+        }
+
+
 
 
 

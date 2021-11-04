@@ -41,12 +41,12 @@ class MyViewModel (activity: Application): AndroidViewModel(activity)
         }
     }
 
-//    fun deleteTasks(id:Int) {
-//        GlobalScope.launch(Main)
-//        {
-//            ob.TaskDao().deleteTask(Task(id)
-//
-//        }
-//    }
+    fun deleteTasks(id:Int) {
+        GlobalScope.launch(Main)
+        {
+            ob.TaskDao().deleteTask(Task(id,"","",0,false))
+
+        }
+    }
 }
 

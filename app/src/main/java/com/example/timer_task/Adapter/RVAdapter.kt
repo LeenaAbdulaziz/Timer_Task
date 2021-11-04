@@ -38,17 +38,13 @@ class recyclerView (private var taskContent: List<Task>,private val activity: Ma
         val tasks=taskContent[position]
         holder.itemView.apply {
 
-            fun updateTime(startup:Boolean, courrentSecound:Int?=0)
-            {
-                if (startup)
-                {
+            fun updateTime(startup: Boolean, courrentSecound: Int? = 0) {
+                if (startup) {
                     var hours = (tasks.timer) / 3600;
                     var minutes = ((tasks.timer) % 3600) / 60;
                     var seconds = (tasks.timer) % 60;
                     tvTaskTime.text = String.format("%01d:%02d:%02d", hours, minutes, seconds)
-                }
-                else
-                {
+                } else {
                     var hours = (tasks.timer + courrentSecound!!) / 3600
                     var minutes = ((tasks.timer + courrentSecound!!) % 3600) / 60
                     var seconds = (tasks.timer + courrentSecound!!) % 60
@@ -61,65 +57,58 @@ class recyclerView (private var taskContent: List<Task>,private val activity: Ma
             updateTime(true)
 
             tvTaskName.text = tasks.taskName
-            tvDescription.text = tasks.taskDescription
 
             var tempTime = 0
             var current_second = 0
-            val time: CountUpTimer = object : CountUpTimer(Long.MAX_VALUE)
-            {
-                override fun onTick(courrentSecound: Int)
-                {
-                   updateTime(false,courrentSecound)
+            val time: CountUpTimer = object : CountUpTimer(Long.MAX_VALUE) {
+                override fun onTick(courrentSecound: Int) {
+                    updateTime(false, courrentSecound)
                     current_second = courrentSecound
                     fixedtime = courrentSecound + tempTime
 
                 }
             }
 
-            fun counter()
-            {
-                if (currentId!=-1)
-                {
-                    currentId=tasks.id
+            fun counter() {
+                if (currentId != -1) {
+                    currentId = tasks.id
                 }
-                if (currentId==lastId)
-                {
-                    if (tasks.timer_state == false)
-                    {
+                if (currentId == lastId) {
+                    if (tasks.timer_state == false) {
                         tempTime = tasks.timer!!
                         tasks.timer_state = true
-                        currentId=tasks.id
-                        if (lastId==-1)
-                        {
-                            lastId=tasks.id
+                        currentId = tasks.id
+                        if (lastId == -1) {
+                            lastId = tasks.id
                         }
                         time.start()
-                    }
-                    else
-                    {
+                    } else {
                         tempTime = fixedtime
                         tasks.timer = tempTime
                         tasks.timer_state = false
-                        lastId=tasks.id
+                        lastId = tasks.id
                         time.cancel()
                         myViewModel.updatesTasks(tasks)
                     }
-                }
-                else
-                {
+                } else {
                     Toast.makeText(activity, "close last task", Toast.LENGTH_SHORT).show()
                 }
             }
 
 
-
-
             //onClick listener if the user click on the task layout
             itemClick.setOnClickListener {
-              counter()
+                counter()
+
             }
-        }
-    }
+            imageView2.setOnClickListener {
+                activity.confirm(tasks.id)
+            }
+            imageView3.setOnClickListener {
+                activity.info(tasks)
+            }
+
+        }}
 
 
     override fun getItemCount()= taskContent.size
