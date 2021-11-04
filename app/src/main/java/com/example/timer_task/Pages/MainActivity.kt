@@ -1,19 +1,17 @@
-package com.example.timer_task
+package com.example.timer_task.Pages
 
-import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp_room.data2.Task
-import kotlinx.android.synthetic.main.card_task.view.*
+import com.example.timer_task.MyViewModel
+import com.example.timer_task.R
+import com.example.timer_task.Adapter.recyclerView
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,18 +32,15 @@ class MainActivity : AppCompatActivity() {
 
     fun updatedrecycle(){
         myViewModel.getTasks().observe(this,{
-            updateRV(it)
+            recycle.adapter = recyclerView( it,this)
+            recycle.layoutManager = LinearLayoutManager(this)
             list=it
             calculate()
         })
     }
-    fun updateRV(list:List<Task>) {
-        recycle.adapter = recyclerView( list,this)
-        recycle.layoutManager = LinearLayoutManager(this)
-    }
 
     fun newpage(view: View) {
-        startActivity(Intent(this,MainActivity2::class.java))
+        startActivity(Intent(this, AddTaskPage::class.java))
     }
 
 
@@ -62,6 +57,8 @@ class MainActivity : AppCompatActivity() {
 
 
    }
+
+
 
 
 }

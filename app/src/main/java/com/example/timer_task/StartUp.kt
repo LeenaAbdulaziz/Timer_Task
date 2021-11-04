@@ -1,13 +1,16 @@
 package com.example.timer_task
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.timer_task.Pages.MainActivity
 
-class startUp : AppCompatActivity() {
+class startUp : AppCompatActivity()
+{
     private lateinit var btnStart :Button
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_up)
 

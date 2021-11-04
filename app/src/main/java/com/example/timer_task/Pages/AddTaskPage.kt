@@ -1,26 +1,26 @@
-package com.example.timer_task
+package com.example.timer_task.Pages
 
-import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp_room.data2.Task
+import com.example.timer_task.MyViewModel
+import com.example.timer_task.R
 
-class MainActivity2 : AppCompatActivity() {
-lateinit var taskName:EditText
-lateinit var taskDescription:EditText
-lateinit var savebtn:Button
-lateinit var viewbtn:Button
-    lateinit var myViewModel :MyViewModel
+class AddTaskPage : AppCompatActivity()
+{
+    lateinit var taskName:EditText
+    lateinit var taskDescription:EditText
+    lateinit var savebtn:Button
+    lateinit var viewbtn:Button
+    lateinit var myViewModel : MyViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         taskName=findViewById(R.id.edNameTask)
@@ -33,7 +33,8 @@ lateinit var viewbtn:Button
         savebtn.setOnClickListener {
             val s1=taskName.text.toString()
             val s2=taskDescription.text.toString()
-            if(s1.isNotEmpty()&&s2.isNotEmpty()) {
+            if(s1.isNotEmpty()&&s2.isNotEmpty())
+            {
                 val task=Task(0,s1,s2,0,false)
                 myViewModel.addTasks(task)
                 taskName.text.clear()
@@ -41,12 +42,13 @@ lateinit var viewbtn:Button
                 Toast.makeText(applicationContext, "data successfully added", Toast.LENGTH_SHORT)
                     .show()
             }
-            else{
+            else
+            {
                 Toast.makeText(applicationContext,"All fields are required!", Toast.LENGTH_SHORT).show()
             }
         }
         viewbtn.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 

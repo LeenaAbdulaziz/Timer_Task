@@ -9,7 +9,8 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MyViewModel (activity: Application): AndroidViewModel(activity){
+class MyViewModel (activity: Application): AndroidViewModel(activity)
+{
     private val tasks:LiveData<List<Task>>
 
     val ob= TaskDatabase.getinstant(activity)
@@ -18,17 +19,20 @@ class MyViewModel (activity: Application): AndroidViewModel(activity){
         tasks=ob.TaskDao().getAlTasks()
     }
 
-    fun getTasks(): LiveData<List<Task>>{
+    fun getTasks(): LiveData<List<Task>>
+    {
         return tasks
     }
-    fun addTasks(task:Task) {
+    fun addTasks(task:Task)
+    {
 
         GlobalScope.launch(Main)
         {
             ob.TaskDao().addTask(Task(0,task.taskName,task.taskDescription,0,false))
         }
-        }
-    fun updatesTasks(task: Task) {
+    }
+    fun updatesTasks(task: Task)
+    {
         GlobalScope.launch(Main)
         {
             ob.TaskDao().updateTask(
@@ -44,5 +48,5 @@ class MyViewModel (activity: Application): AndroidViewModel(activity){
 //
 //        }
 //    }
-    }
+}
 
