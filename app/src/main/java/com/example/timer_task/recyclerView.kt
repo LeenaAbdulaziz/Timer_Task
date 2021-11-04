@@ -1,6 +1,5 @@
 package com.example.timer_task
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,17 +30,27 @@ import kotlinx.android.synthetic.main.card_task.view.*
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val tasks=taskContent[position]
         holder.itemView.apply {
-            tvTaskTime.text = tasks.timer.toString()
+            var hours = (tasks.timer) / 3600;
+            var minutes =( (tasks.timer) % 3600) / 60;
+            var seconds = (tasks.timer) % 60;
+            tvTaskTime.text = String.format("%01d:%02d:%02d", hours, minutes, seconds);
 
             tvTaskName.text = tasks.taskName
+            tvDescription.text=tasks.taskDescription
 
             var tempTime = 0
             var current_second = 0
             val time: CountUpTimer = object : CountUpTimer(Long.MAX_VALUE) {
-                override fun onTick(second: Int) {
-                    tvTaskTime.setText((second + tempTime).toString())
-                    current_second = second
-                    fixedtime = second + tempTime
+                override fun onTick(totalSecs: Int) {
+                     var hours = (tasks.timer+totalSecs) / 3600;
+                    var minutes =( (tasks.timer+totalSecs) % 3600) / 60;
+                    var seconds = (tasks.timer+totalSecs) % 60;
+
+                     var timeString = String.format("%01d:%02d:%02d", hours, minutes, seconds);
+                    tvTaskTime.setText(timeString)
+                    current_second = totalSecs
+                    fixedtime = totalSecs + tempTime
+
                 }
             }
 //            fun counter(){

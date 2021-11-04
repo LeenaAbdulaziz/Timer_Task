@@ -44,7 +44,6 @@
             android:textColor="@color/white"
             android:hint="Task Name"
             android:textColorHint="@color/white"
-
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="center" />

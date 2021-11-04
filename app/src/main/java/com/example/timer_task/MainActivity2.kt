@@ -47,6 +47,7 @@ lateinit var viewbtn:Button
         }
         viewbtn.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
 
     }
