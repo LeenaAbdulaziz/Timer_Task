@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM Tasks ORDER BY id")
+    @Query("SELECT * FROM Tasks ORDER BY id asc")
     fun getAlTasks(): LiveData<List<Task>>
 
     @Insert

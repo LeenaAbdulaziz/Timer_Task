@@ -30,20 +30,16 @@ lateinit var viewbtn:Button
 
         myViewModel= ViewModelProvider(this).get(MyViewModel::class.java)
 
-
         savebtn.setOnClickListener {
             val s1=taskName.text.toString()
             val s2=taskDescription.text.toString()
             if(s1.isNotEmpty()&&s2.isNotEmpty()) {
-                myViewModel.addTasks(s1,s2)
+                val task=Task(0,s1,s2,0,false)
+                myViewModel.addTasks(task)
                 taskName.text.clear()
                 taskDescription.text.clear()
-
                 Toast.makeText(applicationContext, "data successfully added", Toast.LENGTH_SHORT)
                     .show()
-
-
-
             }
             else{
                 Toast.makeText(applicationContext,"All fields are required!", Toast.LENGTH_SHORT).show()

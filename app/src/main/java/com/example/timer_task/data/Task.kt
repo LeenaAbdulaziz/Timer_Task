@@ -10,6 +10,6 @@ data class Task (
         @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") val id:Int = 0,
         @ColumnInfo(name = "taskName") var taskName:String="",
         @ColumnInfo(name = "taskDescription") var taskDescription:String="",
-        @ColumnInfo(name = "Timer") var timer:String="0.0",
-        @ColumnInfo(name="timer state") var timer_state:Boolean=false
+        @ColumnInfo(name = "Timer") var timer:Int,
+        @ColumnInfo(name="timer_state") var timer_state:Boolean
         )

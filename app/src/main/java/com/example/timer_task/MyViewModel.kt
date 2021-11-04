@@ -15,40 +15,34 @@ class MyViewModel (activity: Application): AndroidViewModel(activity){
     val ob= TaskDatabase.getinstant(activity)
 
     init {
-
         notes=ob.TaskDao().getAlTasks()
-
-
-
-
-
     }
 
     fun getTasks(): LiveData<List<Task>>{
         return notes
     }
-    fun addTasks(taskName: String,taskDescription:String) {
+    fun addTasks(task:Task) {
 
         GlobalScope.launch(Main)
         {
-  ob.TaskDao().addTask(Task(0,taskName,taskDescription))
-
-            }
+            ob.TaskDao().addTask(Task(0,task.taskName,task.taskDescription,0,false))
         }
-    fun updatesTasks(id:Int,taskName: String,taskDescription:String) {
-        GlobalScope.launch(Main)
-        {
-            ob.TaskDao().updateTask(Task(id, taskName,taskDescription))
-
         }
-    }
-
-    fun deleteTasks(id:Int) {
+    fun updatesTasks(task: Task) {
         GlobalScope.launch(Main)
         {
-            ob.TaskDao().deleteTask(Task(id))
-
+            ob.TaskDao().updateTask(
+                Task(task.id, task.taskName, task.taskDescription, task.timer, task.timer_state)
+            )
         }
     }
+
+//    fun deleteTasks(id:Int) {
+//        GlobalScope.launch(Main)
+//        {
+//            ob.TaskDao().deleteTask(Task(id))
+//
+//        }
+//    }
     }
 
